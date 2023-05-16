@@ -44,10 +44,10 @@ public class EventoDAO {
 		Evento found = em.find(Evento.class, id);
 		if(found != null) {
 			found.setTitolo("Pranzo");
-//		found.setDataEvento(LocalDate.now());
-//		found.setDescrizione("Se magna");
-//		found.setNumeroMassimoPartecipanti(30);
-//		found.setTipoEvento(TipoEvento.PUBBLICO);
+		found.setDataEvento(LocalDate.now());
+		found.setDescrizione("Se magna");
+		found.setNumeroMassimoPartecipanti(30);
+		found.setTipoEvento(TipoEvento.PUBBLICO);
 		System.out.println("PRE REFRESH");
 		System.out.println(found);
 		em.refresh(found);
