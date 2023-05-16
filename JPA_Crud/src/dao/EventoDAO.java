@@ -1,6 +1,8 @@
 package dao;
 
 
+import java.time.LocalDate;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 
@@ -40,15 +42,20 @@ public class EventoDAO {
 
 	public void refresh(long id) {
 		Evento found = em.find(Evento.class, id);
-		found.setTitolo("Cena");
-		found.setDataEvento(null);
-		found.setDescrizione("Se magna");
-		found.setNumeroMassimoPartecipanti(30);
-		found.setTipoEvento(TipoEvento.PUBBLICO);
+		if(found != null) {
+			found.setTitolo("Pranzo");
+//		found.setDataEvento(LocalDate.now());
+//		found.setDescrizione("Se magna");
+//		found.setNumeroMassimoPartecipanti(30);
+//		found.setTipoEvento(TipoEvento.PUBBLICO);
 		System.out.println("PRE REFRESH");
 		System.out.println(found);
 		em.refresh(found);
 		System.out.println("POST REFRESH");
 		System.out.println(found);
+		}else {
+			System.out.println("Nessun evento trovato");
+		}
+		
 	}
 }

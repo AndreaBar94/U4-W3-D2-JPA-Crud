@@ -26,8 +26,20 @@ public class Application {
 		EntityManager em = emf.createEntityManager();
 		EventoDAO sd = new EventoDAO(em);
 		
-		Evento cena = new Evento("Cena", LocalDate.now(), "Cena di beneficenza", TipoEvento.PRIVATO, 30);
-		sd.save(cena);
+		Evento cena1 = new Evento("Cena", LocalDate.now(), "Cena di beneficenza", TipoEvento.PRIVATO, 30);
+		Evento cena2 = new Evento("Cena 2", LocalDate.now(), "Cena di beneficenza", TipoEvento.PRIVATO, 30);
+		Evento cena3 = new Evento("Cena 3", LocalDate.now(), "Cena di beneficenza", TipoEvento.PUBBLICO, 100);
+		Evento cena4 = new Evento("Cena 4", LocalDate.now(), "Cena di beneficenza", TipoEvento.PUBBLICO, 200);
+		//sd.save(cena1);
+		//sd.save(cena2);
+		//sd.save(cena3);
+		//sd.save(cena4);
+		//sd.delete(2);
+		sd.refresh(4);
+		logger.info("Evento: " + sd.findById(4).toString());
+		em.close();
+
+		emf.close();
 	}
 
 }
